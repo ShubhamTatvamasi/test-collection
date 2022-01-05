@@ -1,0 +1,15 @@
+name: Ansible Galaxy Publish Collection
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: galaxy
+        uses: robertdebock/galaxy-action@1.1.1
+        with:
+          galaxy_api_key: ${{ secrets.GALAXY_API_KEY }}
