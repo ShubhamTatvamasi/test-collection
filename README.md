@@ -8,3 +8,6 @@ https://galaxy.ansible.com/shubhamtatvamasi/test_collection
 ansible-galaxy collection build
 ansible-galaxy collection publish shubhamtatvamasi-test_collection-1.0.1.tar.gz
 ```
+
+
+ansible-galaxy role init roles/example

@@ -1,3 +1,5 @@
+---
+# tasks file for roles/example
 - hosts: localhost
 
   tasks:
