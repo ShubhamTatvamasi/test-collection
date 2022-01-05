@@ -9,14 +9,18 @@ jobs:
   galaxy-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Package Ansible Galaxy Collection
         run: ansible-galaxy collection build
+
       - name: Publish Ansible Galaxy Collection
         run: |
           COLLECTION_NAMESPACE=$(yq e '.namespace' galaxy.yml)
           COLLECTION_NAME=$(yq e '.name' galaxy.yml)
           COLLECTION_VERSION=$(yq e '.version' galaxy.yml)
+
           ansible-galaxy collection publish \
             --api-key ${{ secrets.GALAXY_API_KEY }} \
             ${COLLECTION_NAMESPACE}-${COLLECTION_NAME}-${COLLECTION_VERSION}.tar.gz
