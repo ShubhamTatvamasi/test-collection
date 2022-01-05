@@ -1,12 +1,15 @@
 name: Ansible Galaxy Publish Collection
-
-on:
-  - push
-
+on: [push]
 jobs:
   docker-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: ansible-galaxy collection build
-      - run: ansible-galaxy collection publish shubhamtatvamasi-test_collection-1.0.1.tar.gz --api-key ${{ secrets.GALAXY_API_KEY }}
+      - run: |
+          COLLECTION_NAMESPACE=$(yq e '.namespace' galaxy.yml)
+          COLLECTION_NAME=$(yq e '.name' galaxy.yml)
+          COLLECTION_VERSION=$(yq e '.version' galaxy.yml)
+          ansible-galaxy collection publish \
+            --api-key ${{ secrets.GALAXY_API_KEY }} \
+            ${COLLECTION_NAMESPACE}-${COLLECTION_NAME}-${COLLECTION_VERSION}.tar.gz
