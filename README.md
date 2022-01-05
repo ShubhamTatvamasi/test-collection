@@ -9,5 +9,12 @@ ansible-galaxy collection build
 ansible-galaxy collection publish shubhamtatvamasi-test_collection-1.0.1.tar.gz
 ```
 
-
+create new role
+```bash
 ansible-galaxy role init roles/example
+```
+
+install collections
+```bash
+ansible-galaxy collection install shubhamtatvamasi.test_collection
+```
