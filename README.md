@@ -16,5 +16,5 @@ ansible-galaxy role init roles/example
 
 install collections
 ```bash
-ansible-galaxy collection install shubhamtatvamasi.test_collection
+ansible-galaxy collection install shubhamtatvamasi.test_collection --upgrade
 ```
