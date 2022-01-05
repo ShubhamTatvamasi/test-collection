@@ -1,12 +1,19 @@
 name: Ansible Galaxy Publish Collection
-on: [push]
+
+on:
+  push:
+    tags:
+      - '*'
+
 jobs:
-  docker-build:
+  galaxy-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: ansible-galaxy collection build
-      - run: |
+      - name: Package Ansible Galaxy Collection
+        run: ansible-galaxy collection build
+      - name: Publish Ansible Galaxy Collection
+        run: |
           COLLECTION_NAMESPACE=$(yq e '.namespace' galaxy.yml)
           COLLECTION_NAME=$(yq e '.name' galaxy.yml)
           COLLECTION_VERSION=$(yq e '.version' galaxy.yml)
