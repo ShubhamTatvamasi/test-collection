@@ -2,6 +2,7 @@
 
 Documentation for the collection.
 
+https://galaxy.ansible.com/shubhamtatvamasi/test_collection
 
 ```bash
 ansible-galaxy collection build
