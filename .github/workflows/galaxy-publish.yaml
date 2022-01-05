@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ansible-galaxy collection build
-      - run: ansible-galaxy collection publish shubhamtatvamasi-test_collection-1.0.1.tar.gz ${{ secrets.GALAXY_API_KEY }}
+      - run: ansible-galaxy collection publish shubhamtatvamasi-test_collection-1.0.1.tar.gz --api-key ${{ secrets.GALAXY_API_KEY }}
