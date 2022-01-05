@@ -18,3 +18,8 @@ install collections
 ```bash
 ansible-galaxy collection install shubhamtatvamasi.test_collection --upgrade
 ```
+
+Run playbook:
+```bash
+ansible-playbook test.yaml
+```
